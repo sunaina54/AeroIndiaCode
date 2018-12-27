@@ -1,0 +1,10 @@
+{
+	"toiletList": [
+		"Washroom needs cleaning", "Washroom drain is clogged", "Washroom has foul smell", "Access area to washroom needs cleaning", "Refill hand soap", "Refill paper towels"
+	, "No water available", "Water tap is leaking", "Door lock is broken",
+		"Light does not work", "Washroom is nice & clean,Great Job!"
+	],
+	"wifiList": [
+		"Internet speed is not good","No internet available"
+	]
+}
