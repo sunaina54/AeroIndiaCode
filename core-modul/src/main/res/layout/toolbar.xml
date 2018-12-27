@@ -30,7 +30,6 @@
             android:layout_marginRight="@dimen/margin_40"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:gravity="center"
             android:layout_toLeftOf="@+id/logoutIV"
 
             >
@@ -47,6 +46,8 @@
 
             <TextView
                 android:visibility="visible"
+                android:text="psq"
+                android:layout_gravity="right"
                 android:id="@+id/txt_toolbar_cmpny"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -104,15 +104,17 @@ private LoginResponse loginResponse;
 
 if(loginResponse!=null) {
     data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
-   // data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
+    data.add(new DashboardModel("Notice Board", R.drawable.ic_announcement));
+    data.add(new DashboardModel("Contact Exhibitor", R.drawable.ic_contact_exhibitor));
+
+
+    // data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
     data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
 
     data.add(new DashboardModel("Services", R.drawable.ic_services));
 
 
-    data.add(new DashboardModel("Notice Board", R.drawable.ic_announcement));
     data.add(new DashboardModel("Service Complaint", R.drawable.ic_feedback));
-    data.add(new DashboardModel("Contact Exhibitor", R.drawable.ic_contact_exhibitor));
    // data.add(new DashboardModel("Logout", R.drawable.logout));
 }
 else
@@ -268,6 +270,7 @@ else
                     if(loginResponse!=null) {
                         if (listPosition == 0) {
 
+                            //Exhibition Layout
                             Intent theIntent = new Intent(context, AirforceActivity.class);
                             startActivity(theIntent);
 
@@ -278,32 +281,36 @@ else
 //
 //                        }
                         else if (listPosition == 1) {
-                            Intent theIntent = new Intent(context, UpcomingEventsActivity.class);
-                            startActivity(theIntent);
-                        } /*else if (listPosition == 3) {
-                        Intent theIntent = new Intent(context, MyActivities.class);
-                        startActivity(theIntent);
-                    }*/ else if (listPosition == 2) {
 
-                            Intent theIntent = new Intent(context, ServicesActivity.class);
+                            //Noticeboard
+                            Intent theIntent = new Intent(context, AnnouncementsActivity.class);
                             startActivity(theIntent);
+
+                        }  else if (listPosition == 2) {
+
+                            //Contact Exhibitor
+                            Intent theIntent = new Intent(context, ContactExhibitor.class);
+                            theIntent.putExtra(TAG, CONTACT_EXHIBITOR);
+                            startActivity(theIntent);
+
 
 
                         } else if (listPosition == 3) {
 
-                            Intent theIntent = new Intent(context, AnnouncementsActivity.class);
+
+                            //Upcoming Events
+                            Intent theIntent = new Intent(context, UpcomingEventsActivity.class);
                             startActivity(theIntent);
 
-
-                            //CustomAlert.alertWithOk(context,"Under development");
                         } else if (listPosition == 4) {
-
-                            Intent theIntent = new Intent(context, WriteFeedbackActivity.class);
+                            //Services
+                            Intent theIntent = new Intent(context, ServicesActivity.class);
                             startActivity(theIntent);
+
 
                         } else if (listPosition == 5) {
-                            Intent theIntent = new Intent(context, ContactExhibitor.class);
-                            theIntent.putExtra(TAG, CONTACT_EXHIBITOR);
+                            //Service complaint
+                            Intent theIntent = new Intent(context, WriteFeedbackActivity.class);
                             startActivity(theIntent);
                         } /*else if (listPosition == 6) {
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(

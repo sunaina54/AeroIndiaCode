@@ -49,6 +49,7 @@ public class UpcomingEventsActivity extends BaseAppCompatActivity {
     private EventsAdapter adapter;
     private GPSTracker gps;
     private double latitude, longitude;
+    private ArrayList<EventModel> eventModels=new ArrayList<>();
     private UpcomingEventsResponse upcomingEventsResponse;
     private LoginResponse loginResponse;
     private SwipeRefreshLayout eventRefreshLayout;
@@ -71,6 +72,10 @@ public class UpcomingEventsActivity extends BaseAppCompatActivity {
         });
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         data = new ArrayList<EventModel>();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new EventsAdapter(context, data, latitude, longitude);
+        recyclerView.setAdapter(adapter);
         loginResponse = LoginResponse.create(ProjectPrefrence.getSharedPrefrenceData(AppConstant.PROJECT_PREF, AppConstant.LOGIN_DETAILS, context));
 
         eventRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.eventRefreshLayout);
@@ -94,8 +99,7 @@ public class UpcomingEventsActivity extends BaseAppCompatActivity {
             }
         });
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(layoutManager);
+
         if (gps.canGetLocation()) {
             latitude = gps.getLatitude();
             longitude = gps.getLongitude();
@@ -107,19 +111,30 @@ public class UpcomingEventsActivity extends BaseAppCompatActivity {
         }
         if (AppUtilityFunction.isNetworkAvailable(context)) {
 
-            data = DatabaseOpration.getEventData(context);
-            if (data.size() > 0) {
+            eventModels = DatabaseOpration.getEventData(context);
+            if (eventModels.size() > 0) {
 
-                adapter = new EventsAdapter(context, data, latitude, longitude);
-                recyclerView.setAdapter(adapter);
+                for (int i=0;i<eventModels.size();i++) {
+                    data.add(new EventModel(eventModels.get(i).getId(), eventModels.get(i).getDateTime(),
+                            eventModels.get(i).getEventName(), eventModels.get(i).getEventType(),
+                            eventModels.get(i).getVenue(), eventModels.get(i).getLatitude(),
+                            eventModels.get(i).getLongitude()));
+                }
+               adapter.notifyDataSetChanged();
             }
             getAllEvents();
         } else {
-            data = DatabaseOpration.getEventData(context);
-            if (data.size() > 0) {
 
-                adapter = new EventsAdapter(context, data, latitude, longitude);
-                recyclerView.setAdapter(adapter);
+            eventModels = DatabaseOpration.getEventData(context);
+            if (eventModels.size() > 0) {
+
+                for (int i=0;i<eventModels.size();i++) {
+                    data.add(new EventModel(eventModels.get(i).getId(), eventModels.get(i).getDateTime(),
+                            eventModels.get(i).getEventName(), eventModels.get(i).getEventType(),
+                            eventModels.get(i).getVenue(), eventModels.get(i).getLatitude(),
+                            eventModels.get(i).getLongitude()));
+                }
+                adapter.notifyDataSetChanged();
             }
         }
     }

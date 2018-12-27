@@ -148,7 +148,7 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         rescan.setPaintFlags(rescan.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         selectedExhibitorTv = (TextView) findViewById(R.id.selectedExhibitorTv);
-        headerTV.setText("Report Us");
+        headerTV.setText("Service Complaint");
 
         contentFrame = (ViewGroup) findViewById(R.id.content_frame);
         mScannerView = new ZXingScannerView(this);

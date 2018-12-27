@@ -183,62 +183,72 @@
                     android:visibility="gone" />
 
                 <LinearLayout
-                    android:id="@+id/serviceNameLL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_10"
-                    android:orientation="horizontal">
-
-                    <TextView
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/margin_10">
+                    <LinearLayout
+                        android:id="@+id/serviceNameLL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/selectedExhibitorTv"
-                        android:layout_marginLeft="@dimen/margin_10"
-                        android:text="Service Name : "
-                        android:textSize="@dimen/font_16"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:orientation="horizontal">
 
-                        android:textColor="@color/black" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/selectedExhibitorTv"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="Service Name : "
+                            android:textSize="@dimen/font_16"
 
-                    <TextView
-                        android:id="@+id/serviceNameTv"
-                        android:layout_width="wrap_content"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/serviceNameTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/selectedExhibitorTv"
+                            android:layout_marginLeft="@dimen/margin_5"
+                            android:text="VIP Toilet"
+                            android:textSize="@dimen/font_16"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/zoneLL"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/selectedExhibitorTv"
-                        android:layout_marginLeft="@dimen/margin_10"
-                        android:text=""
-                        android:textSize="@dimen/font_16"
-                        />
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/selectedExhibitorTv"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="Zone : "
+                            android:textSize="@dimen/font_16"
+
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/zoneTV"
+                            android:textSize="@dimen/font_16"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/selectedExhibitorTv"
+                            android:layout_marginLeft="@dimen/margin_5"
+                            android:text="Zone A1" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/zoneLL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_10"
-                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/selectedExhibitorTv"
-                        android:layout_marginLeft="@dimen/margin_10"
-                        android:text="Zone : "
-                        android:textSize="@dimen/font_16"
-
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/zoneTV"
-                        android:textSize="@dimen/font_16"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/selectedExhibitorTv"
-                        android:layout_marginLeft="@dimen/margin_10"
-                        android:text="" />
-
-                </LinearLayout>
 
                 <TextView
                     android:id="@+id/ratingTv"

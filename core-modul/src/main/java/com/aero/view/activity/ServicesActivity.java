@@ -40,21 +40,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicesActivity extends BaseAppCompatActivity {
-RelativeLayout backLayout;
-private TextView headerTV;
-private Context context;
-private RecyclerView recyclerView;
-    private ArrayList<ServiceModel> data=new ArrayList<>();
+    RelativeLayout backLayout;
+    private TextView headerTV;
+    private Context context;
+    private RecyclerView recyclerView;
+    private ArrayList<ServiceModel> data = new ArrayList<>();
     private ServiceAdapter adapter;
     private AllServicesResponse allServicesResponse;
-    ArrayList<AllServicesResponse.services> servicesLocal=new ArrayList<>();
+    ArrayList<AllServicesResponse.services> servicesLocal = new ArrayList<>();
     private SwipeRefreshLayout serviceRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
-        context=this;
+        context = this;
         getSupportActionBar().hide();
         backLayout = (RelativeLayout) findViewById(R.id.backLayout);
         headerTV = (TextView) findViewById(R.id.headerTV);
@@ -82,11 +82,11 @@ private RecyclerView recyclerView;
         //  data.add(new ExhibitorModel("company2","Hall B","#13"));
         adapter = new ServiceAdapter(context, data);
         recyclerView.setAdapter(adapter);
-        serviceRefreshLayout=(SwipeRefreshLayout) findViewById(R.id.serviceRefreshLayout);
+        serviceRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.serviceRefreshLayout);
         serviceRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(AppUtilityFunction.isNetworkAvailable(context)) {
+                if (AppUtilityFunction.isNetworkAvailable(context)) {
                    /* servicesLocal= DatabaseOpration.getServiceData(context);
                     if(servicesLocal.size()>0)
                     {
@@ -100,36 +100,33 @@ private RecyclerView recyclerView;
                         adapter.notifyDataSetChanged();
                     }*/
                     getAllServicesList();
-                }else {
-                    Toast.makeText(context,"Please connect internet to refresh data",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(context, "Please connect internet to refresh data", Toast.LENGTH_LONG).show();
                 }
                 serviceRefreshLayout.setRefreshing(false);
             }
         });
-        if(AppUtilityFunction.isNetworkAvailable(context)) {
-            servicesLocal= DatabaseOpration.getServiceData(context);
-            if(servicesLocal.size()>0)
-            {
+        if (AppUtilityFunction.isNetworkAvailable(context)) {
+            servicesLocal = DatabaseOpration.getServiceData(context);
+            if (servicesLocal.size() > 0) {
 
                 for (int i = 0; i < servicesLocal.size(); i++) {
 
-                    data.add(new ServiceModel(servicesLocal.get(i).getId(), servicesLocal.get(i).getServiceCode(),servicesLocal.get(i).getServiceName()));
+                    data.add(new ServiceModel(servicesLocal.get(i).getId(),
+                            servicesLocal.get(i).getServiceCode(), servicesLocal.get(i).getServiceName()));
 
                 }
 
                 adapter.notifyDataSetChanged();
             }
             getAllServicesList();
-        }
-        else
-        {
-            servicesLocal= DatabaseOpration.getServiceData(context);
-            if(servicesLocal.size()>0)
-            {
+        } else {
+            servicesLocal = DatabaseOpration.getServiceData(context);
+            if (servicesLocal.size() > 0) {
 
                 for (int i = 0; i < servicesLocal.size(); i++) {
 
-                    data.add(new ServiceModel(servicesLocal.get(i).getId(), servicesLocal.get(i).getServiceCode(),servicesLocal.get(i).getServiceName()));
+                    data.add(new ServiceModel(servicesLocal.get(i).getId(), servicesLocal.get(i).getServiceCode(), servicesLocal.get(i).getServiceName()));
 
                 }
 
@@ -137,12 +134,13 @@ private RecyclerView recyclerView;
             }
         }
     }
+
     public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHolder> {
 
         private ArrayList<ServiceModel> dataSet;
         Context context;
 
-        public class MyViewHolder extends RecyclerView.ViewHolder   {
+        public class MyViewHolder extends RecyclerView.ViewHolder {
 
             private TextView serviceTv;
             private RelativeLayout lay2;
@@ -158,23 +156,25 @@ private RecyclerView recyclerView;
 
 
         }
+
         public void addAll(List<ServiceModel> list) {
 
             dataSet.addAll(list);
             notifyDataSetChanged();
         }
+
         public ServiceAdapter(Context context, ArrayList<ServiceModel> data) {
 
             this.dataSet = data;
-            this.context=context;
+            this.context = context;
 
         }
 
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                                   int viewType) {
+                                               int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R .layout.service_item_layout, parent, false);
+                    .inflate(R.layout.service_item_layout, parent, false);
 
             //view.setOnClickListener(MainActivity.myOnClickListener);
 
@@ -187,46 +187,59 @@ private RecyclerView recyclerView;
         public void onBindViewHolder(final ServiceAdapter.MyViewHolder holder, final int listPosition) {
 
 
-            final ServiceModel serviceModel=dataSet.get(listPosition);
-holder.serviceTv.setText(serviceModel.getServiceName());
-if(serviceModel.getServiceName().toLowerCase().contains("restaurant"))
-{
-holder.icon.setBackgroundResource(R.drawable.restaurant);
-}
-else if(serviceModel.getServiceName().toLowerCase().contains("hall"))
-{
-    holder.icon.setBackgroundResource(R.drawable.hall);
+            final ServiceModel serviceModel = dataSet.get(listPosition);
+            holder.serviceTv.setText(serviceModel.getServiceName());
+            if (serviceModel.getServiceName().toLowerCase().contains("restaurant")) {
+                holder.icon.setBackgroundResource(R.drawable.restaurant);
+            } else if (serviceModel.getServiceName().toLowerCase().contains("hall")) {
+                holder.icon.setBackgroundResource(R.drawable.hall);
 
-}
-else if(serviceModel.getServiceName().toLowerCase().contains("toilets"))
-{
-    holder.icon.setBackgroundResource(R.drawable.restroom);
+            } else if (serviceModel.getServiceName().toLowerCase().contains("toilets")) {
+                holder.icon.setBackgroundResource(R.drawable.restroom);
 
-}
-else
-{
-    holder.icon.setBackgroundResource(R.drawable.hall);
+            } else if (serviceModel.getServiceName().toLowerCase().contains("internet")) {
+                holder.icon.setBackgroundResource(R.drawable.internet_wifi);
 
-}
-holder.lay2.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
+            } else if (serviceModel.getServiceName().toLowerCase().contains("fax")) {
+                holder.icon.setBackgroundResource(R.drawable.fax);
 
-            Intent intent = new Intent(context, AirforceServicesActivity.class);
-            intent.putExtra("servicename",serviceModel.getServiceName());
-            startActivity(intent);
+            } else if (serviceModel.getServiceName().toLowerCase().contains("golf cart")) {
+                holder.icon.setBackgroundResource(R.drawable.golf_cart);
+
+            }else if (serviceModel.getServiceName().toLowerCase().contains("coffee shop")) {
+                holder.icon.setBackgroundResource(R.drawable.coffe_shop);
+
+            }else if (serviceModel.getServiceName().toLowerCase().contains("parking")) {
+                holder.icon.setBackgroundResource(R.drawable.parking);
+
+            }else if (serviceModel.getServiceName().toLowerCase().contains("gates")) {
+                holder.icon.setBackgroundResource(R.drawable.gates);
+
+            }else if (serviceModel.getServiceName().toLowerCase().contains("hospital")) {
+                holder.icon.setBackgroundResource(R.drawable.hospital);
+
+            } else {
+                holder.icon.setBackgroundResource(R.drawable.hall);
+
+            }
+            holder.lay2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context, AirforceServicesActivity.class);
+                    intent.putExtra("servicename", serviceModel.getServiceName());
+                    startActivity(intent);
 
 
-
-
-    }
-});
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
             return dataSet.size();
         }
+
         public void clearDataSource() {
 
             dataSet.clear();
@@ -236,8 +249,8 @@ holder.lay2.setOnClickListener(new View.OnClickListener() {
     }
 
     private void getAllServicesList() {
-       // showHideProgressDialog(true);
-        VolleyTaskListener taskListener=new VolleyTaskListener() {
+        // showHideProgressDialog(true);
+        VolleyTaskListener taskListener = new VolleyTaskListener() {
             @Override
             public void postExecute(String response) {
                 allServicesResponse = AllServicesResponse.create(response);
@@ -246,24 +259,21 @@ holder.lay2.setOnClickListener(new View.OnClickListener() {
 
                     if (allServicesResponse.isStatus()) {
                         if (allServicesResponse.services != null) {
-                            if(allServicesResponse.services.size()>0) {
+                            if (allServicesResponse.services.size() > 0) {
                                 data.clear();
                                 // nocake.setText("There are "+getTrendingListResponse.result.size()+" cakes under this category");
                                 for (int i = 0; i < allServicesResponse.services.size(); i++) {
 
-                                    data.add(new ServiceModel(allServicesResponse.services.get(i).getId(), allServicesResponse.services.get(i).getServiceCode(),allServicesResponse.services.get(i).getServiceName()));
-                                    AllServicesResponse.services servicesModel= CommonDatabaseAero.updateService(context,allServicesResponse.services.get(i));
-                                    if(servicesModel==null)
-                                    {
-                                        CommonDatabaseAero.saveService(context,allServicesResponse.services.get(i));
+                                    data.add(new ServiceModel(allServicesResponse.services.get(i).getId(), allServicesResponse.services.get(i).getServiceCode(), allServicesResponse.services.get(i).getServiceName()));
+                                    AllServicesResponse.services servicesModel = CommonDatabaseAero.updateService(context, allServicesResponse.services.get(i));
+                                    if (servicesModel == null) {
+                                        CommonDatabaseAero.saveService(context, allServicesResponse.services.get(i));
 
                                     }
                                 }
 
                                 adapter.notifyDataSetChanged();
-                            }
-                            else
-                            {
+                            } else {
                                 CustomAlert.alertOkWithFinish(context, "There is no services available for now");
 
                             }
@@ -272,7 +282,7 @@ holder.lay2.setOnClickListener(new View.OnClickListener() {
 
                         }
                     }
-                   // showHideProgressDialog(false);
+                    // showHideProgressDialog(false);
 
                 }
             }
@@ -281,7 +291,7 @@ holder.lay2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onError(VolleyError error) {
 
-               // showHideProgressDialog(false);
+                // showHideProgressDialog(false);
                 if (error.getMessage() != null) {
                     if (error.getMessage().contains("java.net.UnknownHostException")) {
                         CustomAlert.alertWithOk(context, getResources().getString(R.string.internet_connection_message));
@@ -296,10 +306,9 @@ holder.lay2.setOnClickListener(new View.OnClickListener() {
                 }
 
 
-
             }
         };
-        CustomVolleyGet volley=new CustomVolleyGet(taskListener, null,AppConstant.ALLSERVICES_API,context);
+        CustomVolleyGet volley = new CustomVolleyGet(taskListener, null, AppConstant.ALLSERVICES_API, context);
         volley.execute();
     }
 }

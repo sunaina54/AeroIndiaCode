@@ -42,6 +42,8 @@ public class AnnouncementsActivity extends AppCompatActivity {
     private Context context;
     private RecyclerView recyclerView;
     private ArrayList<NoticeBoardItemModel> data = new ArrayList<>();
+    private ArrayList<NoticeBoardItemModel> noticeBoardItemModels = new ArrayList<>();
+
     private AnnouncementAdapter adapter;
     private NoticeBoardResponseModel noticeBoardResponseModel;
     private SwipeRefreshLayout eventRefreshLayout;
@@ -64,6 +66,11 @@ public class AnnouncementsActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         data = new ArrayList<NoticeBoardItemModel>();
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new AnnouncementAdapter(context, data);
+        recyclerView.setAdapter(adapter);
+
         eventRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.eventRefreshLayout);
         eventRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -84,24 +91,31 @@ public class AnnouncementsActivity extends AppCompatActivity {
                 eventRefreshLayout.setRefreshing(false);
             }
         });
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerView.setLayoutManager(layoutManager);
+
 
         if (AppUtilityFunction.isNetworkAvailable(context)) {
 
-            data = DatabaseOpration.getNoticeBoardData(context);
-            if (data.size() > 0) {
-
-                adapter = new AnnouncementAdapter(context, data);
-                recyclerView.setAdapter(adapter);
+            noticeBoardItemModels = DatabaseOpration.getNoticeBoardData(context);
+            if (noticeBoardItemModels.size() > 0) {
+                for(int i=0;i<noticeBoardItemModels.size();i++) {
+                    data.add(new NoticeBoardItemModel(noticeBoardItemModels.get(i).getId(),
+                            noticeBoardItemModels.get(i).getTitle(), noticeBoardItemModels.get(i).getLatitude(),
+                            noticeBoardItemModels.get(i).getLongitude()
+                            , noticeBoardItemModels.get(i).getVenue(), noticeBoardItemModels.get(i).getDateTime()));
+                }
+                adapter.notifyDataSetChanged();
             }
             getNoticeBoardResult();
         } else {
-            data = DatabaseOpration.getNoticeBoardData(context);
-            if (data.size() > 0) {
-
-                adapter = new AnnouncementAdapter(context, data);
-                recyclerView.setAdapter(adapter);
+            noticeBoardItemModels = DatabaseOpration.getNoticeBoardData(context);
+            if (noticeBoardItemModels.size() > 0) {
+                for(int i=0;i<noticeBoardItemModels.size();i++) {
+                    data.add(new NoticeBoardItemModel(noticeBoardItemModels.get(i).getId(),
+                            noticeBoardItemModels.get(i).getTitle(), noticeBoardItemModels.get(i).getLatitude(),
+                            noticeBoardItemModels.get(i).getLongitude()
+                            , noticeBoardItemModels.get(i).getVenue(), noticeBoardItemModels.get(i).getDateTime()));
+                }
+                adapter.notifyDataSetChanged();
             }
         }
 

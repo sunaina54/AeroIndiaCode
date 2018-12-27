@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/lay2"
                 android:layout_width="match_parent"
@@ -98,36 +99,36 @@
 
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/venuLoc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_below="@+id/dateTv"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="@dimen/margin_10dp"
                     android:background="@drawable/rounded_shape_theme_border"
                     android:padding="@dimen/margin_10dp"
                     android:text="Venue Location"
+                    android:textColor="@color/white"
 
-                    android:textColor="@color/white" />
+                    android:visibility="gone" />
             </RelativeLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_10"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_margin="@dimen/margin_10">
+                android:visibility="visible"
+                >
+
                 <RelativeLayout
                     android:id="@+id/feedbackRL"
-                    android:layout_below="@+id/lay2"
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-android:visibility="visible"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_5"
                     android:background="@drawable/edittext_green_bg_curve_corner"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="visible">
 
                     <ImageView
                         android:id="@+id/contactIV"
@@ -143,20 +144,17 @@ android:visibility="visible"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/margin_5"
+                        android:paddingRight="@dimen/margin_5"
                         android:layout_toRightOf="@+id/contactIV"
                         android:text="@string/feedback" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/locLayout"
-                    android:layout_below="@+id/lay2"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-
                     android:layout_width="wrap_content"
-                    android:layout_toRightOf="@+id/feedbackRL"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_toRightOf="@+id/feedbackRL"
                     android:background="@drawable/edittext_green_bg_curve_corner"
                     android:orientation="horizontal"
                     android:visibility="visible">
@@ -175,20 +173,96 @@ android:visibility="visible"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/margin_5"
+                        android:paddingRight="@dimen/margin_5"
                         android:layout_toRightOf="@+id/stallLocIV"
+                        android:text="Venue" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_10"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+
+
+                <RelativeLayout
+                    android:id="@+id/feedbackRL1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:background="@drawable/edittext_green_bg_curve_corner"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/contactIV1"
+                        android:layout_width="@dimen/margin_20"
+                        android:layout_height="@dimen/margin_20"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:background="@drawable/feedback_icon" />
+
+                    <TextView
+                        style="@style/mediumEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:paddingRight="@dimen/margin_5"
+                        android:layout_toRightOf="@+id/contactIV1"
+                        android:text="@string/feedback" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/locLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:layout_toRightOf="@+id/feedbackRL"
+                    android:background="@drawable/edittext_green_bg_curve_corner"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/stallLocIV1"
+                        android:layout_width="@dimen/margin_20"
+                        android:layout_height="@dimen/margin_20"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:background="@drawable/location_circle" />
+
+                    <TextView
+                        style="@style/mediumEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:paddingRight="@dimen/margin_5"
+                        android:layout_toRightOf="@+id/stallLocIV1"
                         android:text="Venue" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/extraLayout"
-                    android:layout_below="@+id/lay2"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
-                    android:layout_toRightOf="@+id/feedbackRL"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/lay2"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:gravity="center_horizontal"
+                    android:layout_toRightOf="@+id/feedbackRL"
+                    android:layout_weight="1"
                     android:background="@drawable/edittext_green_bg_curve_corner"
+                    android:gravity="center_horizontal"
                     android:orientation="horizontal"
                     android:visibility="invisible">
 
@@ -213,7 +287,6 @@ android:visibility="visible"
 
 
         </LinearLayout>
-
 
 
     </android.support.v7.widget.CardView>
