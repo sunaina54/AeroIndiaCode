@@ -103,7 +103,7 @@ private LoginResponse loginResponse;
         data = new ArrayList<DashboardModel>();
 
 if(loginResponse!=null) {
-    data.add(new DashboardModel("Where am I?", R.drawable.ic_where_ami));
+    data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
    // data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
     data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
 
@@ -117,7 +117,7 @@ if(loginResponse!=null) {
 }
 else
 {
-    data.add(new DashboardModel("Where am I?", R.drawable.ic_where_ami));
+    data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
    // data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
     data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
 

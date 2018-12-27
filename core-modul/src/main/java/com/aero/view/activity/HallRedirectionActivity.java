@@ -189,7 +189,7 @@ public class HallRedirectionActivity extends AppCompatActivity implements
 
 
         if (mMap != null) {
-            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
             try {
                 upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
                 upperlayer.addLayerToMap();

@@ -131,7 +131,7 @@ public class ExhibitorUserMyDashboard extends Fragment {
         //data.add(new DashboardModel("Activities", R.drawable.ic_my_wal));
 
        // data.add(new DashboardModel("Add Announcement", R.drawable.ic_announcement));
-        data.add(new DashboardModel("Where am I?", R.drawable.ic_where_ami));
+        data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
       //  data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_my_wal));
         data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
         data.add(new DashboardModel("Services", R.drawable.ic_services));

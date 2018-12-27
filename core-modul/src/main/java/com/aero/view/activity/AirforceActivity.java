@@ -131,13 +131,13 @@ public class AirforceActivity extends AppCompatActivity implements
                 if (polylineFinal != null)
                     polylineFinal.remove();
 
-                //hallsTv.setBackgroundColor(getResources().getColor(R.color.black));
-                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
-                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
-                restaurantTv.setBackgroundColor(getResources().getColor(R.color.blue));
-                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
-                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
-                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebanglorehalls;
                 if (mMap != null) {
@@ -166,13 +166,13 @@ public class AirforceActivity extends AppCompatActivity implements
             public void onClick(View view) {
                 footer.setVisibility(View.GONE);
 
-                // gateTv.setBackgroundColor(getResources().getColor(R.color.black));
-                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
-                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
-                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
-                restaurantTv.setBackgroundColor(getResources().getColor(R.color.blue));
-                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
-                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
+                 gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 if (polylineFinal != null)
                     polylineFinal.remove();
                 resId = R.raw.airforcebangloregates;
@@ -203,13 +203,13 @@ public class AirforceActivity extends AppCompatActivity implements
                 footer.setVisibility(View.GONE);
                 if (polylineFinal != null)
                     polylineFinal.remove();
-                //challetTv.setBackgroundColor(getResources().getColor(R.color.black));
-                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
-                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
-                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
-                restaurantTv.setBackgroundColor(getResources().getColor(R.color.blue));
-                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
-                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebanglorechalet;
                 if (mMap != null) {
@@ -239,13 +239,13 @@ public class AirforceActivity extends AppCompatActivity implements
                 footer.setVisibility(View.GONE);
                 if (polylineFinal != null)
                     polylineFinal.remove();
-                //  hospitalTv.setBackgroundColor(getResources().getColor(R.color.black));
-                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
-                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
-                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
-                restaurantTv.setBackgroundColor(getResources().getColor(R.color.blue));
-                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
-                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                 hospitalTv.setBackgroundColor(getResources().getColor(R.color.blue));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebanglorehospital;
                 if (mMap != null) {
@@ -275,13 +275,13 @@ public class AirforceActivity extends AppCompatActivity implements
                 footer.setVisibility(View.GONE);
                 if (polylineFinal != null)
                     polylineFinal.remove();
-                //restaurantTv.setBackgroundColor(getResources().getColor(R.color.black));
-                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
-                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
-                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
-                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
-                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
-                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.restaurantColor));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebanglorereastaurant;
                 if (mMap != null) {
@@ -311,13 +311,13 @@ public class AirforceActivity extends AppCompatActivity implements
                 footer.setVisibility(View.GONE);
                 if (polylineFinal != null)
                     polylineFinal.remove();
-                //allTv.setBackgroundColor(getResources().getColor(R.color.black));
-                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
-                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
-                restaurantTv.setBackgroundColor(getResources().getColor(R.color.blue));
-                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
-                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
-                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebanglore;
                 if (mMap != null) {
@@ -347,13 +347,13 @@ public class AirforceActivity extends AppCompatActivity implements
                 footer.setVisibility(View.GONE);
                 if (polylineFinal != null)
                     polylineFinal.remove();
-                //parkingTv.setBackgroundColor(getResources().getColor(R.color.black));
-                hallsTv.setBackgroundColor(getResources().getColor(R.color.hallColor));
-                allTv.setBackgroundColor(getResources().getColor(R.color.allColor));
-                restaurantTv.setBackgroundColor(getResources().getColor(R.color.blue));
-                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
-                challetTv.setBackgroundColor(getResources().getColor(R.color.chaletColor));
-                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
+                hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebangloreparking;
                 if (mMap != null) {
@@ -521,7 +521,7 @@ public class AirforceActivity extends AppCompatActivity implements
 
 */
         if (mMap != null) {
-            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
             try {
                 upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
                 upperlayer.addLayerToMap();
