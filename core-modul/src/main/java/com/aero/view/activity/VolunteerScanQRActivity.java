@@ -88,7 +88,7 @@ private TextView headerTV,selectedExhibitorTv,serviceNameTv,statusTv,commentTv;
         rescan = (TextView) findViewById(R.id.rescan);
         rescan.setPaintFlags(rescan.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         selectedExhibitorTv = (TextView) findViewById(R.id.selectedExhibitorTv);
-        headerTV.setText("Scan QR code");
+        headerTV.setText("Volunteer Scan QR code");
 
         contentFrame = (ViewGroup) findViewById(R.id.content_frame);
         mScannerView = new ZXingScannerView(this);

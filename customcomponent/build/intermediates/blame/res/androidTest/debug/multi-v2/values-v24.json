@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\ps_quick_it\\AeroIndia\\AeroIndia24Dec\\Aero-show-Assistance-14-OCT\\customcomponent\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "D:\\PSQuickIT\\AeroIndiaCode\\customcomponent\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Dell3\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\451e74ab68cb7572bf81655e9bacece5\\res\\values-v24\\values-v24.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,212,347,416,480,549",
-                        "endColumns": "156,134,68,63,68,69",
-                        "endOffsets": "207,342,411,475,544,614"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Dell3\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\a0af88e8e1c1f259a8f7d544f1bf5919\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Dell13\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\d285526e3d078caeef48e36117c7e6b1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -28,6 +18,16 @@
                         "startOffsets": "619,685,746,812",
                         "endColumns": "65,60,65,66",
                         "endOffsets": "680,741,807,874"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Dell13\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\230c46be2560c46f0dc4c1804d923d17\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,212,347,416,480,549",
+                        "endColumns": "156,134,68,63,68,69",
+                        "endOffsets": "207,342,411,475,544,614"
                     }
                 }
             ]
