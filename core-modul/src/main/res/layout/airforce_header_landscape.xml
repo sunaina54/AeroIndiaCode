@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/back_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="@dimen/margin_5"
+        android:layout_marginRight="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:background="@drawable/back_image" />
+
+    <TextView
+        android:id="@+id/allTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/back_image"
+        android:background="@color/allColor"
+        android:padding="@dimen/margin_10"
+        android:text="All"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/hallsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/allTv"
+        android:background="@color/darker_gray"
+
+        android:padding="@dimen/margin_10"
+        android:text="Halls"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/parkingTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/hallsTv"
+        android:background="@color/darker_gray"
+        android:padding="@dimen/margin_10"
+        android:text="Parking"
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:id="@+id/restaurantTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/parkingTv"
+        android:background="@color/darker_gray"
+        android:padding="@dimen/margin_10"
+        android:text="Restaurant"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/challetTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/restaurantTv"
+        android:background="@color/darker_gray"
+        android:padding="@dimen/margin_10"
+        android:text="Chalet"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/hospitalTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+
+        android:layout_toRightOf="@+id/challetTv"
+        android:background="@color/darker_gray"
+        android:padding="@dimen/margin_10"
+        android:text="Hospital"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/gateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/hospitalTv"
+        android:background="@color/darker_gray"
+        android:padding="@dimen/margin_10"
+        android:text="Gate"
+        android:textColor="@color/white" />
+
+
+    <ImageView
+        android:id="@+id/locIV"
+        android:layout_alignParentTop="true"
+        android:layout_width="@dimen/margin_40dp"
+        android:layout_height="@dimen/margin_40dp"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginRight="@dimen/margin_10"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/margin_10"
+        android:src="@drawable/current_location" />
+
+    <TextView
+        android:id="@+id/locTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_toRightOf="@+id/gateTv"
+        android:background="@color/locColor"
+        android:padding="@dimen/margin_10"
+        android:text="Where Am I"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+</RelativeLayout>

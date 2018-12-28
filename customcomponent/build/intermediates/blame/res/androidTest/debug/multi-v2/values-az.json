@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\PSQuickIT\\AeroIndiaCode\\customcomponent\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-az\\values-az.xml",
+            "outputFile": "D:\\ps_quick_it\\AeroIndia\\AeroIndia28Dec\\AeroIndiaCode\\customcomponent\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-az\\values-az.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Dell13\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\230c46be2560c46f0dc4c1804d923d17\\res\\values-az\\values-az.xml",
+                    "source": "C:\\Users\\Dell3\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\451e74ab68cb7572bf81655e9bacece5\\res\\values-az\\values-az.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -261,7 +261,7 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         serviceIssueTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ArrayList itemsSelected = new ArrayList();
+        /*        final ArrayList itemsSelected = new ArrayList();
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Report Washroom");
                 builder.setMultiChoiceItems(commnetArr, null,
@@ -315,9 +315,10 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
                             }
                         });
                 dialog = builder.create();
-                dialog.show();
+                dialog.show();*/
             }
         });
+
 
 
         submitBTN.setOnClickListener(new View.OnClickListener() {
@@ -345,15 +346,17 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
                         || serviceIssueTV.getText().toString().equalsIgnoreCase("-Select option-")){
                     CustomAlert.alertWithOk(context, "Please select service issue.");
                     return;
+                }else {
+                    prepareSubmitReportData();
                 }
 
-                if (selectedCmnt.equalsIgnoreCase("")) {
+              /*  if (selectedCmnt.equalsIgnoreCase("")) {
                     CustomAlert.alertWithOk(context, "Please enter comment to submit report.");
                     return;
                 } else {
-                    prepareSubmitReportData();
 
-                }
+
+                }*/
 
 
             }
@@ -382,6 +385,66 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         });
     }
 
+    private void showClaimListPopup(){
+        final ArrayList itemsSelected = new ArrayList();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Report Complaint");
+        builder.setCancelable(false);
+        builder.setMultiChoiceItems(commnetArr, null,
+                new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int selectedItemId,
+                                        boolean isSelected) {
+                        if (isSelected) {
+                            String value = commnetArr[selectedItemId];
+                            selectedOption = selectedOption + "," + value;
+                            itemsSelected.add(selectedItemId);
+
+                            Log.d("Items code select", selectedOption);
+                        } else if (itemsSelected.contains(selectedItemId)) {
+                            itemsSelected.remove(Integer.valueOf(selectedItemId));
+
+                        }
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        ListView list = ((AlertDialog) dialog).getListView();
+                        // make selected item in the comma seprated string<br />
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for (int i = 0; i < list.getCount(); i++) {
+                            boolean checked = list.isItemChecked(i);
+                            if (checked) {
+                                if (stringBuilder.length() > 0)
+                                    stringBuilder.append(",");
+                                stringBuilder.append(list.getItemAtPosition(i));
+
+                            }
+                        }
+
+                        if (stringBuilder.toString().length() > 0) {
+                            serviceIssueTV.setText(stringBuilder);
+                        } else {
+                            stringBuilder.setLength(0);
+                            serviceIssueTV.setText("Select Options");
+                        }
+                        //Your logic when OK button is clicked
+                        //  Log.d("Items code",selectedOption);
+                        // serviceIssueTV.setText(selectedOption.replaceFirst(",",""));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+    }
     private void prepareSubmitReportData() {
         //    if (qrCodeResponseModel != null) {
         ReportUsRequestModel reportUsRequestModel = new ReportUsRequestModel();
@@ -589,6 +652,8 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         } catch (Exception e) {
             // CM.ShowDialogNoInternet(activity, activity.getResources().getString(R.string.invalid_qr_code), false);
         }
+
+        showClaimListPopup();
 
     }
 

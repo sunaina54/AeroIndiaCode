@@ -109,38 +109,52 @@ private Context context;
         }
         if(servicename.toLowerCase().contains("restaurant"))
         {
+            restaurantTv.setBackgroundColor(getResources().getColor(R.color.restaurantColor));
             resId=R.raw.airforcebanglorereastaurant;
         }
         else if(servicename.toLowerCase().contains("coffie shop"))
         {
+            coffieShopTv.setBackgroundColor(getResources().getColor(R.color.green));
             resId=R.raw.airforcebanglorecoffieshop;
         } else if(servicename.toLowerCase().contains("parking"))
         {
+            coffieShopTv.setBackgroundColor(getResources().getColor(R.color.red));
+
             resId=R.raw.airforcebangloreparking;
         } else if(servicename.toLowerCase().contains("gates"))
-        {resId=R.raw.airforcebangloregates;
+        {
+            gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+
+            resId=R.raw.airforcebangloregates;
         } else if(servicename.toLowerCase().contains("hospital"))
         {
+            hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
+
             resId=R.raw.airforcebanglorehospital;
         }
         else if(servicename.toLowerCase().contains("toilets"))
         {
+            toiletsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
             resId=R.raw.airforcebanglore;
             toiletsTv.performClick();
         } else if(servicename.toLowerCase().contains("internet"))
         {
+            internetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
             resId=R.raw.airforcebanglore;
             internetTv.performClick();
 
         }
         else if(servicename.toLowerCase().contains("fax"))
         {
+            faxTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
             resId=R.raw.airforcebanglore;
             faxTv.performClick();
 
         }
         else if(servicename.toLowerCase().contains("golf"))
         {
+            golfcardTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
             resId=R.raw.airforcebanglore;
             golfcardTv.performClick();
 
@@ -158,7 +172,15 @@ private Context context;
         gateTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                toiletsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                internetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                faxTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                golfcardTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                coffieShopTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 callMap(R.raw.airforcebangloregates);
 
             }
@@ -167,6 +189,15 @@ private Context context;
         hospitalTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                toiletsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                internetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                faxTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                golfcardTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                coffieShopTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
                 callMap(R.raw.airforcebanglorehospital);
 
 
@@ -177,6 +208,15 @@ private Context context;
         coffieShopTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                toiletsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                internetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                faxTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                golfcardTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                coffieShopTv.setBackgroundColor(getResources().getColor(R.color.green));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 callMap(R.raw.airforcebanglorecoffieshop);
 
 
@@ -185,6 +225,15 @@ private Context context;
         restaurantTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.restaurantColor));
+                toiletsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                internetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                faxTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                golfcardTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                coffieShopTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 callMap(R.raw.airforcebanglorereastaurant);
 
 
@@ -196,6 +245,15 @@ private Context context;
         parkingTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                toiletsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                internetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                faxTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                golfcardTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                coffieShopTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
+                gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
               callMap(R.raw.airforcebangloreparking);
             }
         });

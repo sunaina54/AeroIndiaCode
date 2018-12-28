@@ -120,6 +120,7 @@ public class DashboardActivity extends AppCompatActivity {
 
             }
         } else {
+            logoutIV.setVisibility(View.GONE);
             toolbar_title.setText(getResources().getString(R.string.welcom) + "  " + "Unknown");
             txt_toolbar_cmpny.setVisibility(View.GONE);
 

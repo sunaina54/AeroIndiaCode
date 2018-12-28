@@ -461,6 +461,7 @@ public class NewDashboardActivity extends BaseAppCompatActivity {
 
 
                 } else {
+                    verifyCodeET.setText("");
                     incorrectotpLabel.setVisibility(View.VISIBLE);
                     incorrectotpLabel.setText(loginResponse.getErrorMessage());
                     //  Toast.makeText(context,loginResponse.getErrorMessage(),Toast.LENGTH_LONG).show();

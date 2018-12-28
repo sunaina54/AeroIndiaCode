@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TestApp.iml" filepath="$PROJECT_DIR$/TestApp.iml" />
+      <module fileurl="file://D:\ps_quick_it\AeroIndia\AeroIndia28Dec\AeroIndiaCode\TestApp\TestApp.iml" filepath="D:\ps_quick_it\AeroIndia\AeroIndia28Dec\AeroIndiaCode\TestApp\TestApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\ps_quick_it\AeroIndia\AeroIndia28Dec\AeroIndiaCode\TestApp\app\app.iml" filepath="D:\ps_quick_it\AeroIndia\AeroIndia28Dec\AeroIndiaCode\TestApp\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../core-modul/core-modul.iml" filepath="$PROJECT_DIR$/../core-modul/core-modul.iml" />
       <module fileurl="file://$PROJECT_DIR$/../customcomponent/customcomponent.iml" filepath="$PROJECT_DIR$/../customcomponent/customcomponent.iml" />
     </modules>

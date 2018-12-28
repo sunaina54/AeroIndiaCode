@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
@@ -69,13 +70,26 @@ public class AirforceActivity extends AppCompatActivity implements
     private Context context;
     private PolylineOptions polys;
     private Polyline polylineFinal;
-
+    private ImageView locIV;
+private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_airforce);
         getSupportActionBar().hide();
         context = this;
+        landscapeHeaderRL= (RelativeLayout) findViewById(R.id.landscapeHeaderRL);
+        potraitHeaderRL= (RelativeLayout) findViewById(R.id.potraitHeaderRL);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            landscapeHeaderRL.setVisibility(View.VISIBLE);
+            potraitHeaderRL.setVisibility(View.GONE);
+        }
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            landscapeHeaderRL.setVisibility(View.GONE);
+            potraitHeaderRL.setVisibility(View.VISIBLE);
+        }
+
         mapType = (ImageView) findViewById(R.id.mapType);
         back_image = (ImageView) findViewById(R.id.back_image);
         hallsTv = (TextView) findViewById(R.id.hallsTv);
@@ -86,6 +100,7 @@ public class AirforceActivity extends AppCompatActivity implements
         hospitalTv = (TextView) findViewById(R.id.hospitalTv);
         gateTv = (TextView) findViewById(R.id.gateTv);
         locTv = (TextView) findViewById(R.id.locTv);
+        locIV = (ImageView) findViewById(R.id.locIV);
         footer = (TextView) findViewById(R.id.footer);
         mapType.setVisibility(View.VISIBLE);
         //allTv.setBackgroundColor(getResources().getColor(R.color.black));
@@ -377,7 +392,7 @@ public class AirforceActivity extends AppCompatActivity implements
                 }
             }
         });
-        locTv.setOnClickListener(new View.OnClickListener() {
+        locIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 footer.setVisibility(View.VISIBLE);
