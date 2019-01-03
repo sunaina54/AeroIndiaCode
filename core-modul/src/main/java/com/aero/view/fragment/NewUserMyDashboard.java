@@ -105,11 +105,12 @@ private LoginResponse loginResponse;
 if(loginResponse!=null) {
     data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
     data.add(new DashboardModel("Notice Board", R.drawable.ic_announcement));
+    data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
     data.add(new DashboardModel("Contact Exhibitor", R.drawable.ic_contact_exhibitor));
 
 
     // data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
-    data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
+
 
     data.add(new DashboardModel("Services", R.drawable.ic_services));
 
@@ -288,19 +289,19 @@ else
 
                         }  else if (listPosition == 2) {
 
+                            //Upcoming Events
+                            Intent theIntent = new Intent(context, UpcomingEventsActivity.class);
+                            startActivity(theIntent);
+
+
+
+                        } else if (listPosition == 3) {
                             //Contact Exhibitor
                             Intent theIntent = new Intent(context, ContactExhibitor.class);
                             theIntent.putExtra(TAG, CONTACT_EXHIBITOR);
                             startActivity(theIntent);
 
 
-
-                        } else if (listPosition == 3) {
-
-
-                            //Upcoming Events
-                            Intent theIntent = new Intent(context, UpcomingEventsActivity.class);
-                            startActivity(theIntent);
 
                         } else if (listPosition == 4) {
                             //Services

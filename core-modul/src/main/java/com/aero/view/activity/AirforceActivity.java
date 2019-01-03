@@ -14,6 +14,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -63,14 +64,16 @@ public class AirforceActivity extends AppCompatActivity implements
     private String servicename;
     private int resId;
     AlertDialog levelDialog;
-    private ImageView mapType, back_image;
-    private TextView hallsTv, parkingTv, allTv, restaurantTv, hospitalTv, challetTv, gateTv, locTv, footer;
+    private ImageView mapType, back_image,back_image1;
+    private TextView hallsTv,hallsTv1, parkingTv,parkingTv1, allTv, allTv1,
+            restaurantTv,restaurantTv1, hospitalTv,hospitalTv1, challetTv,challetTv1, gateTv,gateTv1,
+            locTv,locTv1, footer;
     KmlLayer upperlayer = null;
     private LatLng userLocation;
     private Context context;
     private PolylineOptions polys;
     private Polyline polylineFinal;
-    private ImageView locIV;
+    private ImageView locIV,locIV1;
 private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,21 +95,53 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
 
         mapType = (ImageView) findViewById(R.id.mapType);
         back_image = (ImageView) findViewById(R.id.back_image);
+        back_image1 = (ImageView) findViewById(R.id.back_image1);
+        back_image1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        back_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         hallsTv = (TextView) findViewById(R.id.hallsTv);
+        hallsTv1 = (TextView) findViewById(R.id.hallsTv1);
+
         allTv = (TextView) findViewById(R.id.allTv);
+        allTv1 = (TextView) findViewById(R.id.allTv1);
+
         parkingTv = (TextView) findViewById(R.id.parkingTv);
+        parkingTv1 = (TextView) findViewById(R.id.parkingTv1);
+
         restaurantTv = (TextView) findViewById(R.id.restaurantTv);
+        restaurantTv1 = (TextView) findViewById(R.id.restaurantTv1);
+
         challetTv = (TextView) findViewById(R.id.challetTv);
+        challetTv1 = (TextView) findViewById(R.id.challetTv1);
+
         hospitalTv = (TextView) findViewById(R.id.hospitalTv);
+        hospitalTv1 = (TextView) findViewById(R.id.hospitalTv1);
+
         gateTv = (TextView) findViewById(R.id.gateTv);
+        gateTv1 = (TextView) findViewById(R.id.gateTv1);
+
         locTv = (TextView) findViewById(R.id.locTv);
+        locTv1 = (TextView) findViewById(R.id.locTv1);
+
         locIV = (ImageView) findViewById(R.id.locIV);
+        locIV1 = (ImageView) findViewById(R.id.locIV1);
+
         footer = (TextView) findViewById(R.id.footer);
         mapType.setVisibility(View.VISIBLE);
         //allTv.setBackgroundColor(getResources().getColor(R.color.black));
         back_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("Airforce","finish");
                 finish();
             }
         });
@@ -139,6 +174,8 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
             resId = R.raw.airforcebanglore;
 
         }
+
+
         hallsTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,6 +213,43 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 }
             }
         });
+        hallsTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.hallColor));
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                resId = R.raw.airforcebanglorehalls;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
         gateTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,6 +262,42 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 restaurantTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+                resId = R.raw.airforcebangloregates;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
+        gateTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.gateColor));
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 if (polylineFinal != null)
                     polylineFinal.remove();
                 resId = R.raw.airforcebangloregates;
@@ -248,13 +358,51 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 }
             }
         });
+
+        challetTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.chaletColor));
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                resId = R.raw.airforcebanglorechalet;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
+
         hospitalTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 footer.setVisibility(View.GONE);
                 if (polylineFinal != null)
                     polylineFinal.remove();
-                 hospitalTv.setBackgroundColor(getResources().getColor(R.color.blue));
+                 hospitalTv.setBackgroundColor(getResources().getColor(R.color.hospitalColor));
                 hallsTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 parkingTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 allTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
@@ -284,6 +432,80 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 }
             }
         });
+
+        hospitalTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.blue));
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                resId = R.raw.airforcebanglorehospital;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
+        restaurantTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.restaurantColor));
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                resId = R.raw.airforcebanglorereastaurant;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
+
         restaurantTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -320,6 +542,7 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 }
             }
         });
+
         allTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -333,6 +556,42 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 hospitalTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 challetTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
                 gateTv.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                resId = R.raw.airforcebanglore;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
+        allTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+                allTv1.setBackgroundColor(getResources().getColor(R.color.allColor));
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
 
                 resId = R.raw.airforcebanglore;
                 if (mMap != null) {
@@ -392,7 +651,99 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
                 }
             }
         });
+
+        parkingTv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.GONE);
+                if (polylineFinal != null)
+                    polylineFinal.remove();
+                parkingTv1.setBackgroundColor(getResources().getColor(R.color.red));
+                hallsTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                allTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                restaurantTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                hospitalTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                challetTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+                gateTv1.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                resId = R.raw.airforcebangloreparking;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLoc, 14.9F));
+
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
         locIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                footer.setVisibility(View.VISIBLE);
+                resId = R.raw.airforcebanglore;
+                if (mMap != null) {
+                    upperlayer.removeLayerFromMap();
+                    //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+                    try {
+                        upperlayer = new KmlLayer(mMap, resId, getApplicationContext());
+                        upperlayer.addLayerToMap();
+
+                        LatLng markerLoc = new LatLng(13.1358, 77.60243);
+
+                        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                        builder.include(markerLoc);
+                        builder.include(userLocation);
+
+                        LatLngBounds bounds = builder.build();
+//                        int padding = 0; // offset from edges of the map in pixels
+//                        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, 40);
+
+                        int padding = 150; // offset from edges of the map in pixels
+                        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+                        mMap.moveCamera(cu);
+                        mMap.animateCamera(cu);
+//if(AppUtilityFunction.isNetworkAvailable(context))
+//{
+//    String url = getDirectionsUrl(markerLoc, userLocation);
+//
+//    DownloadTask downloadTask = new DownloadTask();
+//
+//    // Start downloading json data from Google Directions API
+//    downloadTask.execute(url);
+//}
+//else {
+                        polys = new PolylineOptions().geodesic(true);
+                        polys.add(markerLoc).width(5).color(R.color.locColor);
+                        polys.add(userLocation).width(5).color(R.color.locColor);
+                        polylineFinal = mMap.addPolyline(polys);
+                        double distance = distance(markerLoc.latitude, markerLoc.longitude, userLocation.latitude, userLocation.longitude);
+                        footer.setText("You are " + distance + " km. away from the show.");
+//}
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }
+        });
+
+        locIV1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 footer.setVisibility(View.VISIBLE);
@@ -489,6 +840,24 @@ private RelativeLayout potraitHeaderRL,landscapeHeaderRL;
             }
         });
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation==Configuration.ORIENTATION_LANDSCAPE){
+            landscapeHeaderRL.setVisibility(View.VISIBLE);
+            potraitHeaderRL.setVisibility(View.GONE);
+            Log.d("On Config Change","LANDSCAPE");
+        }else{
+                landscapeHeaderRL.setVisibility(View.GONE);
+            potraitHeaderRL.setVisibility(View.VISIBLE);
+            Log.d("On Config Change","PORTRAIT");
+        }
+    }
+
+
+
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

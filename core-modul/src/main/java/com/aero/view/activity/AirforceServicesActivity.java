@@ -99,7 +99,7 @@ private Context context;
             public void onClick(View view) {
                 if(upperlayer!=null)
                     upperlayer.removeLayerFromMap();
-                CustomAlert.alertWithOk(context,"Golf Card location coming soon.");
+                CustomAlert.alertWithOk(context,"Golf Cart location coming soon.");
             }
         });
 
@@ -112,14 +112,12 @@ private Context context;
             restaurantTv.setBackgroundColor(getResources().getColor(R.color.restaurantColor));
             resId=R.raw.airforcebanglorereastaurant;
         }
-        else if(servicename.toLowerCase().contains("coffie shop"))
+        else if(servicename.toLowerCase().contains("coffee shop"))
         {
             coffieShopTv.setBackgroundColor(getResources().getColor(R.color.green));
             resId=R.raw.airforcebanglorecoffieshop;
-        } else if(servicename.toLowerCase().contains("parking"))
-        {
-            coffieShopTv.setBackgroundColor(getResources().getColor(R.color.red));
-
+        } else if(servicename.toLowerCase().contains("parking")) {
+            parkingTv.setBackgroundColor(getResources().getColor(R.color.red));
             resId=R.raw.airforcebangloreparking;
         } else if(servicename.toLowerCase().contains("gates"))
         {

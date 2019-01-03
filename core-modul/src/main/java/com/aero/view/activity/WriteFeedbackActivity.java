@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,13 +84,13 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
     String[] serviceArr = {"-Select Service-", "Toilet", "WiFi"};
 
     String[] commnetArr = {};
-/*    String[] commnetArr = {"Washroom needs cleaning", "Washroom drain is clogged", "Washroom has foul smell", "Access area to washroom needs cleaning", "Refill hand soap", "Refill paper towels"
-            , "No water available", "Water tap is leaking", "Door lock is broken",
-            "Light does not work", "Washroom is nice & clean,Great Job!"};*/
+    /*    String[] commnetArr = {"Washroom needs cleaning", "Washroom drain is clogged", "Washroom has foul smell", "Access area to washroom needs cleaning", "Refill hand soap", "Refill paper towels"
+                , "No water available", "Water tap is leaking", "Door lock is broken",
+                "Light does not work", "Washroom is nice & clean,Great Job!"};*/
     private String selectedCmnt;
 
     //
-      /*View*/
+    /*View*/
     RelativeLayout lnr_scan;
     TextView txt_scan_gallery;
     ViewGroup contentFrame;
@@ -167,7 +169,7 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         serviceNameLL = (LinearLayout) findViewById(R.id.serviceNameLL);
         ratingLL = (LinearLayout) findViewById(R.id.ratingLL);
         ratingLL.setVisibility(View.GONE);
-     spin = (Spinner) findViewById(R.id.spinner);
+        spin = (Spinner) findViewById(R.id.spinner);
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
@@ -175,8 +177,6 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
-
-
 
 
         serviceSpinner = (Spinner) findViewById(R.id.serviceSpinner);
@@ -188,45 +188,43 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         //Setting the ArrayAdapter data on the Spinner
         serviceSpinner.setAdapter(serviceAdapter);
 
-            serviceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        serviceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view,
-                                           int position, long id) {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view,
+                                       int position, long id) {
 
-                        if (position == 0) {
+                if (position == 0) {
 
-                        } else if (position == 1) {
-                            String service = serviceSpinner.getSelectedItem().toString();
-                            scanStatus = "Manual";
-                            ratingLL.setVisibility(View.VISIBLE);
-                            zoneLL.setVisibility(View.GONE);
-                            serviceNameLL.setVisibility(View.GONE);
-                            serviceTag=service;
-                            parseQRCode(service);
-
-
-                        } else if (position == 2) {
-                            String service = serviceSpinner.getSelectedItem().toString();
-                            scanStatus = "Manual";
-                            ratingLL.setVisibility(View.VISIBLE);
-                            zoneLL.setVisibility(View.GONE);
-                            serviceNameLL.setVisibility(View.GONE);
-                            serviceTag=service;
-                            parseQRCode(service);
-                        }
+                } else if (position == 1) {
+                    String service = serviceSpinner.getSelectedItem().toString();
+                    scanStatus = "Manual";
+                    ratingLL.setVisibility(View.VISIBLE);
+                    zoneLL.setVisibility(View.GONE);
+                    serviceNameLL.setVisibility(View.GONE);
+                    serviceTag = service;
+                    parseQRCode(service);
 
 
-
+                } else if (position == 2) {
+                    String service = serviceSpinner.getSelectedItem().toString();
+                    scanStatus = "Manual";
+                    ratingLL.setVisibility(View.VISIBLE);
+                    zoneLL.setVisibility(View.GONE);
+                    serviceNameLL.setVisibility(View.GONE);
+                    serviceTag = service;
+                    parseQRCode(service);
                 }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-                    // TODO Auto-generated method stub
 
-                }
-            });
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // TODO Auto-generated method stub
+
+            }
+        });
 
 
         cmntSpinner = (Spinner) findViewById(R.id.commentSpinner);
@@ -254,6 +252,32 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 // TODO Auto-generated method stub
+
+            }
+        });
+
+        qrcodeNumberET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!scanStatus.equalsIgnoreCase("QR Code")) {
+                    if (charSequence != null && charSequence.length() == 4 &&
+                            android.text.TextUtils.isDigitsOnly(charSequence)) {
+                        scanStatus = "Manual";
+                        ratingLL.setVisibility(View.VISIBLE);
+                        zoneLL.setVisibility(View.GONE);
+                        serviceNameLL.setVisibility(View.GONE);
+                        parseQRCode("");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });
@@ -320,7 +344,6 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         });
 
 
-
         submitBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -337,16 +360,16 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
                     selectedCmnt = cmntSpinner.getSelectedItem().toString();
                 }*/
 
-              if(qrcodeNumberET.getText().toString().equalsIgnoreCase("")){
-                  CustomAlert.alertWithOk(context, "Please enter QR Code number.");
-                  return;
-              }
+                if (qrcodeNumberET.getText().toString().equalsIgnoreCase("")) {
+                    CustomAlert.alertWithOk(context, "Please enter QR Code number.");
+                    return;
+                }
 
-                if(serviceIssueTV.getText().toString().equalsIgnoreCase("")
-                        || serviceIssueTV.getText().toString().equalsIgnoreCase("-Select option-")){
+                if (serviceIssueTV.getText().toString().equalsIgnoreCase("")
+                        || serviceIssueTV.getText().toString().equalsIgnoreCase("-Select option-")) {
                     CustomAlert.alertWithOk(context, "Please select service issue.");
                     return;
-                }else {
+                } else {
                     prepareSubmitReportData();
                 }
 
@@ -385,7 +408,8 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         });
     }
 
-    private void showClaimListPopup(){
+
+    private void showClaimListPopup() {
         final ArrayList itemsSelected = new ArrayList();
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Report Complaint");
@@ -426,6 +450,7 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
 
                         if (stringBuilder.toString().length() > 0) {
                             serviceIssueTV.setText(stringBuilder);
+                            dialog.dismiss();
                         } else {
                             stringBuilder.setLength(0);
                             serviceIssueTV.setText("Select Options");
@@ -445,6 +470,7 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
     }
+
     private void prepareSubmitReportData() {
         //    if (qrCodeResponseModel != null) {
         ReportUsRequestModel reportUsRequestModel = new ReportUsRequestModel();
@@ -546,37 +572,40 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         //    Toast.makeText(context, pay_num, Toast.LENGTH_LONG).show();
 
         if (pay_num != null && !pay_num.equalsIgnoreCase("")) {
-            String[] qrcodeParam = pay_num.split("-");
-            ratingLL.setVisibility(View.VISIBLE);
-            okBTN.setVisibility(View.GONE);
-            serviceSpinner.setSelection(0);
-            serviceSpinner.setEnabled(false);
-            rescan.setVisibility(View.VISIBLE);
-            scanStatus = "QR Code";
-            if (qrcodeParam != null) {
-                if (qrcodeParam[0] != null && !qrcodeParam[0].equalsIgnoreCase("")) {
-                    qrcodeNumber = qrcodeParam[0];
-                    qrcodeNumberET.setText(qrcodeNumber);
-                    qrcodeNumberET.setEnabled(false);
+            try {
+                String[] qrcodeParam = pay_num.split("-");
+                ratingLL.setVisibility(View.VISIBLE);
+                okBTN.setVisibility(View.GONE);
+                serviceSpinner.setSelection(0);
+                serviceSpinner.setEnabled(false);
+                rescan.setVisibility(View.VISIBLE);
+                scanStatus = "QR Code";
+                if (qrcodeParam != null) {
+                    if (qrcodeParam[0] != null && !qrcodeParam[0].equalsIgnoreCase("")) {
+                        qrcodeNumber = qrcodeParam[0];
+                        qrcodeNumberET.setText(qrcodeNumber);
+                        qrcodeNumberET.setEnabled(false);
+                    }
+
+                    if (qrcodeParam[1] != null && !qrcodeParam[1].equalsIgnoreCase("")) {
+                        serviceName = qrcodeParam[1];
+                        serviceNameTv.setText(serviceName);
+                    }
+
+                    if (qrcodeParam[2] != null && !qrcodeParam[2].equalsIgnoreCase("")) {
+                        zone = qrcodeParam[2];
+                        zoneTV.setText(zone);
+                    }
+
+                    if (qrcodeParam[3] != null && !qrcodeParam[3].equalsIgnoreCase("")) {
+                        serviceTag = qrcodeParam[3];
+
+                    }
+                    parseQRCode(serviceTag);
+
                 }
 
-                if (qrcodeParam[1] != null && !qrcodeParam[1].equalsIgnoreCase("")) {
-                    serviceName = qrcodeParam[1];
-                    serviceNameTv.setText(serviceName);
-                }
-
-                if (qrcodeParam[2] != null && !qrcodeParam[2].equalsIgnoreCase("")) {
-                    zone = qrcodeParam[2];
-                    zoneTV.setText(zone);
-                }
-
-                if (qrcodeParam[3] != null && !qrcodeParam[3].equalsIgnoreCase("")) {
-                    serviceTag = qrcodeParam[3];
-
-                }
-            }
-
-            // String qrcodeNumber = "", latitude = "", longitude = "";
+                // String qrcodeNumber = "", latitude = "", longitude = "";
             /*if (qrcodeParam != null) {
                 if (qrcodeParam[0] != null && !qrcodeParam[0].equalsIgnoreCase("")) {
                     qrcodeNumber = qrcodeParam[0];
@@ -589,10 +618,20 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
 
                 prepareQRCodeRequest(qrcodeNumber, latitude, longitude);
             }*/
+            } catch (Exception e) {
+                qrcodeNumberET.setText("");
+                qrcodeNumberET.setHint("QR Code Number");
+                ratingLL.setVisibility(View.GONE);
+                okBTN.setVisibility(View.GONE);
+                serviceSpinner.setEnabled(true);
+                qrcodeNumberET.setEnabled(true);
+                Toast.makeText(context, "Incorrect QR Code", Toast.LENGTH_LONG).show();
+                Log.d("QRCode Exception:", e.toString());
+            }
         }
         //  isQrcodeText = pay_num.contains("60019999");
 
-        parseQRCode(serviceTag);
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -622,7 +661,11 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
         try {
 
             JSONObject jsonObject = new JSONObject(loadServiceComplaintJSONFromAsset());
-            if (code.equalsIgnoreCase("Toilet")) {
+
+            /*if (code.equalsIgnoreCase("Toilet")||
+                    qrcodeNumberET.getText().toString().startsWith("1")) */
+            if (qrcodeNumberET.getText().toString().startsWith("1")) {
+                serviceTag = "Toilet";
                 JSONArray jsonArray = jsonObject.getJSONArray("toiletList");
                 String[] toiletArray = new String[jsonArray.length()];
                 for (int i = 0, count = jsonArray.length(); i < count; i++) {
@@ -633,9 +676,14 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
                         e.printStackTrace();
                     }
                 }
-                commnetArr=toiletArray;
+                commnetArr = toiletArray;
+                showClaimListPopup();
 
-            } else if (code.equalsIgnoreCase("WiFi")) {
+
+            } else if (qrcodeNumberET.getText().toString().startsWith("2")) {
+                serviceTag = "WiFi";
+                /*else if (code.equalsIgnoreCase("WiFi")
+                    || qrcodeNumberET.getText().toString().startsWith("2"))*/
                 JSONArray jsonArray = jsonObject.getJSONArray("wifiList");
                 String[] wifiArray = new String[jsonArray.length()];
                 for (int i = 0, count = jsonArray.length(); i < count; i++) {
@@ -646,14 +694,18 @@ public class WriteFeedbackActivity extends AppCompatActivity implements
                         e.printStackTrace();
                     }
                 }
-                commnetArr=wifiArray;
+                commnetArr = wifiArray;
+                showClaimListPopup();
+
+            }else {
+                    CustomAlert.alertWithOk(context,"Please enter valid QR Code");
+                    return;
             }
 
         } catch (Exception e) {
             // CM.ShowDialogNoInternet(activity, activity.getResources().getString(R.string.invalid_qr_code), false);
         }
 
-        showClaimListPopup();
 
     }
 

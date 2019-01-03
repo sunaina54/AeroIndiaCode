@@ -132,14 +132,16 @@ public class ExhibitorUserMyDashboard extends Fragment {
 
        // data.add(new DashboardModel("Add Announcement", R.drawable.ic_announcement));
         data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_where_ami));
-      //  data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_my_wal));
-        data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
-        data.add(new DashboardModel("Services", R.drawable.ic_services));
         data.add(new DashboardModel("Notice Board", R.drawable.ic_announcement));
+
+        //  data.add(new DashboardModel("Exhibition Layout", R.drawable.ic_my_wal));
+        data.add(new DashboardModel("Upcoming Events", R.drawable.ic_upcoming_event));
+        data.add(new DashboardModel("My Wall", R.drawable.ic_my_wal));
+
+        data.add(new DashboardModel("Services", R.drawable.ic_services));
         data.add(new DashboardModel("Service Complaint", R.drawable.ic_feedback));
         //data.add(new DashboardModel("Company Profile", R.drawable.ic_b2b));
 
-        data.add(new DashboardModel("My Wall", R.drawable.ic_my_wal));
         //data.add(new DashboardModel("Logout", R.drawable.logout));
 
         recyclerView.setLayoutManager(staggeredGridLayoutManagerVertical);
@@ -232,19 +234,23 @@ public class ExhibitorUserMyDashboard extends Fragment {
 //
 //                    }
                     else if (listPosition == 1) {
+                        //Notice board
+                        Intent theIntent = new Intent(context, AnnouncementsActivity.class);
+                        startActivity(theIntent);
+
+                    } else if (listPosition == 2) {
+
                         Intent theIntent = new Intent(context, UpcomingEventsActivity.class);
                         startActivity(theIntent);
-                    } else if (listPosition == 2) {
-                        Intent theIntent = new Intent(context, ServicesActivity.class);
-                        startActivity(theIntent);
+
                        // CustomAlert.alertWithOk(context, "Under development");
 
                     } else if (listPosition == 3) {
-                        Intent theIntent = new Intent(context, AnnouncementsActivity.class);
+                        Intent theIntent = new Intent(context, MyWallActivity.class);
                         startActivity(theIntent);
                     }
                     else if (listPosition == 4) {
-                        Intent theIntent = new Intent(context, WriteFeedbackActivity.class);
+                        Intent theIntent = new Intent(context, ServicesActivity.class);
                         startActivity(theIntent);
 
                     }
@@ -253,7 +259,8 @@ public class ExhibitorUserMyDashboard extends Fragment {
                         startActivity(theIntent);
                     }*/
                     else if (listPosition == 5) {
-                        Intent theIntent = new Intent(context, MyWallActivity.class);
+
+                        Intent theIntent = new Intent(context, WriteFeedbackActivity.class);
                         startActivity(theIntent);
 
                     } /*else if (listPosition == 6) {

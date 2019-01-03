@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/back_image"
@@ -9,6 +9,7 @@
         android:layout_height="30dp"
         android:layout_marginLeft="@dimen/margin_5"
         android:layout_marginRight="@dimen/margin_8"
+        android:clickable="true"
         android:layout_marginTop="@dimen/margin_5"
         android:background="@drawable/back_image" />
 

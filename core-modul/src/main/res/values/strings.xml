@@ -182,6 +182,6 @@
     <string name="publish">Publish</string>
     <string name="auto">Auto</string>
 
-    <string name="qrcodeET_hint">QR Code Number</string>
+    <string name="qrcodeET_hint">4 Digit QR Code Number</string>
     <string name="qrcode_issue">Please enter QR Code number if you are facing any difficulty in scanning. </string>
 </resources>

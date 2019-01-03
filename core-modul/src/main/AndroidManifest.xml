@@ -140,7 +140,6 @@
         <activity
             android:name=".view.activity.AirforceActivity"
             android:configChanges="keyboardHidden|orientation|screenLayout|screenSize"
-            android:screenOrientation="landscape"
          />
         <activity
             android:name=".view.activity.AirforceServicesActivity"
